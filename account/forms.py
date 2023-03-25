@@ -25,7 +25,7 @@ class UserRegistrationForm(forms.ModelForm):
         return cd['password2']
 
 
-class EditUserForm(forms.ModelForm):
+class UserEditForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('first_name', 'last_name', 'email')
