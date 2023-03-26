@@ -75,6 +75,13 @@ TEMPLATES = [
 WSGI_APPLICATION = "bookmarks.wsgi.application"
 
 
+# Authentication Backends
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'account.authentication.EmailAuthBackend',
+]
+
+
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
