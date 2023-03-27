@@ -81,6 +81,7 @@ WSGI_APPLICATION = "bookmarks.wsgi.application"
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'account.authentication.EmailAuthBackend',
+    'social_core.backends.facebook.FacebookOAuth2',
 ]
 
 
@@ -151,3 +152,8 @@ LOGOUT_URL = 'logout'
 
 # TODO: Set production email SMTP
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Facebook Social Auth settings
+SOCIAL_AUTH_FACEBOOK_KEY = os.getenv('SOCIAL_AUTH_FACEBOOK_KEY')
+SOCIAL_AUTH_FACEBOOK_SECRET = os.getenv('SOCIAL_AUTH_FACEBOOK_SECRET')
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
