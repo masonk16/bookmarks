@@ -10,6 +10,10 @@ from .models import Image
 from bookmarks.common.decorators import ajax_required
 
 
+def is_ajax(request):
+    return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
+
+
 @login_required
 def image_create(request):
     if request.method == 'POST':
@@ -71,7 +75,7 @@ def image_list(request):
             return HttpResponse('')
         # If page is out of range deliver last page of results
         images = paginator.page(paginator.num_pages)
-    if request.is_ajax():
+    if is_ajax(request=request):
         return render(request, 'images/image/list_ajax.html',
                       {'section': 'images', 'images': images})
     return render(request, 'images/image/list.html',
