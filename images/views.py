@@ -69,7 +69,7 @@ def image_list(request):
         # If page is not an integer deliver the first page
         images = paginator.page(1)
     except EmptyPage:
-        if request.is_ajax():
+        if is_ajax(request=request):
             # If the request is AJAX and the page is out of range
             # return an empty page
             return HttpResponse('')
